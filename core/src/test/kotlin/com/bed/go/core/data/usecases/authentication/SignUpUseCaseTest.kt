@@ -79,14 +79,12 @@ internal class SignUpUseCaseTest {
     }
 
     @Test
-    fun `Should return failure value with status and message when trying a create account`() = runTest {
+    fun `Should return failure value with message when trying a create account`() = runTest {
         whenever(repository(any())).thenReturn(factory.failure)
 
         val response = useCase(factory.validParams).first()
 
-        response.onLeft { data ->
-            assertEquals(data.message, "Este e-mail já foi cadastrado!")
-        }
+        response.onLeft { assertEquals(it.message, "Este e-mail já foi cadastrado!") }
     }
 
     @Test
@@ -99,13 +97,11 @@ internal class SignUpUseCaseTest {
     }
 
     @Test
-    fun `Should return success value with status and message when trying a create account`() = runTest {
+    fun `Should return success value and message when trying a create account`() = runTest {
         whenever(repository(any())).thenReturn(factory.success)
 
         val response = useCase(factory.validParams).first()
 
-        response.onRight { data ->
-            assertEquals(data.name, "Bed")
-        }
+        response.onRight { assertEquals(it.name, "Bed") }
     }
 }

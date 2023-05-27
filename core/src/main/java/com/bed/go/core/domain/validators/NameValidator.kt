@@ -16,7 +16,7 @@ value class NameValidator private constructor(private val value: String) {
         override fun invoke(value: String): Either<String, String> = either {
             zipOrAccumulate(
                 { before, after -> Validators.combine(before, after) },
-                { ensure(value.isNotEmpty()) { "Preencha nome e o sobrenome válidos." } },
+                { ensure(value.isNotEmpty()) { "Preencha um nome e um sobrenome válidos." } },
                 { ensure(pattern.matcher(value).matches()) { "O nome e o sobrenome precisam ser válidos." } }
             ) { _, _ -> value }
 

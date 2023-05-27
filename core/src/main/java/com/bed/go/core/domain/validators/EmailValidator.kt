@@ -15,7 +15,7 @@ value class EmailValidator private constructor(private val value: String) {
         override fun invoke(value: String): Either<String, String> = either {
             zipOrAccumulate(
                 { before, after -> Validators.combine(before, after) },
-                { ensure(value.isNotEmpty()) { "Preencha um email válido." } },
+                { ensure(value.isNotEmpty()) { "Preencha um e-mail válido." } },
                 { ensure(pattern.matcher(value).matches()) { "O e-mail precisa ser válido." } }
             ) { _, _ -> value }
         }

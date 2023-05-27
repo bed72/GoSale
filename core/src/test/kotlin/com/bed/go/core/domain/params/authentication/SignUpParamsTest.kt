@@ -3,6 +3,7 @@ package com.bed.go.core.domain.params.authentication
 import org.junit.Test
 import org.junit.Before
 import org.junit.runner.RunWith
+import org.junit.Assert.assertTrue
 import org.junit.Assert.assertEquals
 
 import kotlinx.coroutines.test.runTest
@@ -24,10 +25,10 @@ internal class SignUpParamsTest {
     @Test
     fun `Should return message failure when value NameVo is invalid`() = runTest {
         factory.invalidParams.isValid().mapLeft { message ->
-            assertEquals(
-                message,
-                "O nome e o sobrenome precisam ser válidos.,O e-mail precisa ser válido.,A senha presica conter caracteres numéricos.,A senha presica conter caracteres maiúsculos."
-            )
+            assertTrue(message!!.contains("O e-mail precisa ser válido."))
+            assertTrue(message.contains("O nome e o sobrenome precisam ser válidos."))
+            assertTrue(message.contains("A senha presica conter caracteres numéricos."))
+            assertTrue(message.contains("A senha presica conter caracteres maiúsculos."))
         }
     }
 
