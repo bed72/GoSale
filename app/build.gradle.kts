@@ -46,10 +46,10 @@ android {
             applicationIdSuffix = ".debug"
         }
 
-        register("staging") {
+        register("profile") {
             isMinifyEnabled = true
             isShrinkResources = true
-            applicationIdSuffix = ".staging"
+            applicationIdSuffix = ".profile"
             initWith(getByName("debug"))
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
@@ -85,7 +85,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs["compilerVersion"] as String
+        kotlinCompilerExtensionVersion = "1.4.7"
     }
 
     packaging {
@@ -99,47 +99,49 @@ dependencies {
 
     implementation(project(":core"))
 
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
+    val composeVersion = "1.4.3"
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.ui:ui-graphics:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    implementation("androidx.compose.material3:material3:1.1.0")
 
-    implementation("androidx.core:core-ktx:1.10.0")
-    implementation("androidx.activity:activity-compose:1.7.1")
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.activity:activity-compose:1.7.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation(platform("androidx.compose:compose-bom:2023.05.00"))
+    implementation(platform("androidx.compose:compose-bom:2023.05.01"))
 
     // Hilt
-    kapt("com.google.dagger:hilt-android-compiler:${libs["hiltVersion"]}")
-    implementation("com.google.dagger:hilt-android:${libs["hiltVersion"]}")
+    val hiltVersion = "2.46.1"
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
 
     // Ktor
-    implementation("io.ktor:ktor-client-core:${libs["ktorVersion"]}")
-    implementation("io.ktor:ktor-client-okhttp:${libs["ktorVersion"]}")
-    implementation("io.ktor:ktor-client-logging:${libs["ktorVersion"]}")
-    implementation("io.ktor:ktor-client-content-negotiation:${libs["ktorVersion"]}")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:${libs["ktorVersion"]}")
+    val ktorVersion = "2.3.0"
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
     // Other libs
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
     // Lint
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${libs["detektVersion"]}")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0")
 
     // Debug
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
+    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.11")
 
     // Tests
     testImplementation(project(":test"))
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.05.00"))
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${libs["coroutinesVersion"]}")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.05.01"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 }
 
 project.afterEvaluate {
@@ -149,8 +151,8 @@ project.afterEvaluate {
 }
 
 detekt {
+    toolVersion = "1.22.0"
     basePath = rootDir.toString()
-    toolVersion = libs["detektVersion"] as String
 
     debug = true
     parallel = true

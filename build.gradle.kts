@@ -6,14 +6,6 @@ ext {
 
     extra["versionName"] = "1.0"
     extra["namespace"] = "com.bed.go.sale"
-
-    extra["hiltVersion"] = "2.46"
-    extra["ktorVersion"] = "2.3.0"
-    extra["detektVersion"] = "1.22.0"
-    extra["kotlinVersion"] = "1.8.21"
-    extra["compilerVersion"] = "1.4.7"
-    extra["coroutinesVersion"] = "1.6.4"
-
 }
 
 buildscript {

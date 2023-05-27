@@ -12,7 +12,7 @@ dependencies {
     implementation(project(":core"))
 
     api("junit:junit:4.13.2")
-    api("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${rootProject.extra["coroutinesVersion"]}")
+    api("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
 
 }
