@@ -15,6 +15,7 @@ internal class NameValidatorTest {
     fun `Should return messages failure when Name is invalid`() = runTest {
         val data = NameValidator("")
 
+        assertTrue(data.isLeft())
         data.mapLeft { message ->
             assertTrue(message.contains("Preencha um nome e um sobrenome válidos."))
             assertTrue(message.contains("O nome e o sobrenome precisam ser válidos."))
@@ -25,6 +26,7 @@ internal class NameValidatorTest {
     fun `Should return message failure when Name is invalid with partial validations`() = runTest {
         val data = NameValidator("Ga")
 
+        assertTrue(data.isLeft())
         data.mapLeft { assertTrue(it.contains("O nome e o sobrenome precisam ser válidos.")) }
     }
 
@@ -32,6 +34,7 @@ internal class NameValidatorTest {
     fun `Should return the Name when value is valid`() = runTest {
         val data = NameValidator("Gabriel Ramos")
 
+        assertTrue(data.isRight())
         data.map { assertEquals(it, "Gabriel Ramos") }
     }
 }
