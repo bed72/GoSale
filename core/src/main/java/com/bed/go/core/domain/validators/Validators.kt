@@ -2,7 +2,7 @@ package com.bed.go.core.domain.validators
 
 import arrow.core.Either
 
-interface Validators<out T> {
+sealed interface Validators<out T> {
     operator fun invoke(value: String): Either<String, T>
 
     companion object {

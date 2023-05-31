@@ -13,6 +13,6 @@ dependencies {
 
     api("junit:junit:4.13.2")
     api("org.mockito.kotlin:mockito-kotlin:4.1.0")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
 }
