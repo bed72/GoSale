@@ -7,7 +7,7 @@ import com.bed.go.core.domain.params.authentication.SignUpParams
 
 import com.bed.go.sale.framework.adapters.authentication.SignUpAdapter
 
-import com.bed.go.sale.data.models.response.auth.toMapper
+import com.bed.go.sale.data.models.response.authentication.toMapper
 import com.bed.go.sale.data.models.response.message.toMapper
 import com.bed.go.core.data.datasources.authentication.SignUpDataSource
 

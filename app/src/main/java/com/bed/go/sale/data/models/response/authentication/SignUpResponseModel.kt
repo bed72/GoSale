@@ -1,4 +1,4 @@
-package com.bed.go.sale.data.models.response.auth
+package com.bed.go.sale.data.models.response.authentication
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

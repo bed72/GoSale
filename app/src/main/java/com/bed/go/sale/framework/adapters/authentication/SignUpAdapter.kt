@@ -15,7 +15,7 @@ import com.bed.go.core.domain.params.authentication.SignUpParams
 import com.bed.go.sale.framework.adapters.http.call
 
 import com.bed.go.sale.data.alias.SignUpModelType
-import com.bed.go.sale.data.models.request.auth.SignUpRequestModel
+import com.bed.go.sale.data.models.request.authentication.SignUpRequestModel
 
 interface SignUpAdapter {
     suspend operator fun invoke(params: SignUpParams): SignUpModelType

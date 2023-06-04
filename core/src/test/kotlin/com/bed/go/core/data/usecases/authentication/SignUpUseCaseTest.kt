@@ -27,8 +27,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.bed.go.test.rule.MainCoroutineRule
 import com.bed.go.test.factories.authentication.SignUpFactory
 
-import com.bed.go.core.domain.entities.authentication.SignUp
 import com.bed.go.core.domain.entities.message.Message
+import com.bed.go.core.domain.entities.authentication.SignUp
 
 import com.bed.go.core.data.repositories.authentication.SignUpRepository
 
