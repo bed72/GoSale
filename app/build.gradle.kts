@@ -99,11 +99,15 @@ dependencies {
 
     implementation(project(":core"))
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.compose.material3:material3:1.1.0")
+
     val composeVersion = "1.4.3"
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-graphics:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.1.0")
+
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-compose:1.7.2")
@@ -114,6 +118,7 @@ dependencies {
     val hiltVersion = "2.46.1"
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // Ktor
     val ktorVersion = "2.3.0"
@@ -151,7 +156,7 @@ project.afterEvaluate {
 }
 
 detekt {
-    toolVersion = "1.22.0"
+    toolVersion = "1.23.0"
     basePath = rootDir.toString()
 
     debug = true
