@@ -7,8 +7,10 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
 
+private val patternNeedsNumberCharacter get() = Pattern.compile(/* regex = */ ".*\\d.*")
+
 private val patternNeedsUpperCaseCharacter get() = Pattern.compile(/* regex = */ ".*[A-Z].*")
-private val patternNeedsNumberCharacter: Pattern get() = Pattern.compile(/* regex = */ ".*\\d.*")
+
 
 @JvmInline
 value class PasswordValidator private constructor(private val value: String) {

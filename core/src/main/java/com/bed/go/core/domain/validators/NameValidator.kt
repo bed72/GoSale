@@ -7,7 +7,7 @@ import arrow.core.raise.either
 import arrow.core.raise.ensure
 import arrow.core.raise.zipOrAccumulate
 
-private val pattern: Pattern
+private val pattern
     get() = Pattern.compile(/* regex = */ "^([a-zA-Z]{2,}\\s[a-zA-Z]+'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]+)?)")
 
 @JvmInline
